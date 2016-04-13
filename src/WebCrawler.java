@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -19,6 +20,9 @@ public class WebCrawler {
 	public static ArrayList<String> frontier = new ArrayList<String>();
 	public static HashMap<String, Integer> hpCount = new HashMap<String, Integer>();
 	public static HashMap<String, String> hpTitle = new HashMap<String, String>();
+	public static HashMap<String, Integer> hpImage = new HashMap<String, Integer>();
+	public static HashMap<String, Integer> hpLink = new HashMap<String, Integer>();
+	public static HashMap<String, Integer> hpResponse = new HashMap<String, Integer>();
 	public static int count = 0;
 	
 	public static void findURL(String seed, int max, String domain) throws IOException {
@@ -47,7 +51,17 @@ public class WebCrawler {
 			bw.close();
 			in.close();
 			
+			Connection.Response response = Jsoup.connect(seed).execute();
+			int responseCode = response.statusCode();
+			hpResponse.put(seed, responseCode);
+			
+			Elements images = doc.getElementsByTag("img");
+			int imgCount = images.size();
+			hpImage.put(seed, imgCount);
+			
 			Elements links = doc.select("a[href]");
+			int linkCount = links.size();
+			hpLink.put(seed, linkCount);
 			
 			for (Element link: links) {
 				if (frontier.size() >= max) {
@@ -113,13 +127,14 @@ public class WebCrawler {
 			bw.write("\t\t\t<tr>\n");
 			bw.write("\t\t\t\t<td><a href='" + url + "' target='_blank'>" + hpTitle.get(url) + "</a></td>\n");
 			bw.write("\t\t\t\t<td><a href='repository/" + hpCount.get(url) + ".html' download>" + hpCount.get(url) + ".html</a></td>\n");
-			
+			bw.write("\t\t\t\t<td>" + hpResponse.get(url) + "</td>\n");
+			bw.write("\t\t\t\t<td>" + hpLink.get(url) + "</td>\n");
+			bw.write("\t\t\t\t<td>" + hpImage.get(url) + "</td>\n");
 			bw.write("\t\t\t</tr>\n");
-		}
-				
+		}	
 		bw.write("\t\t</table>\n");
 		bw.write("\t</body>\n");
-		bw.write("<html>\n");
+		bw.write("<html>\n"); 
 		bw.close();
 	}
 

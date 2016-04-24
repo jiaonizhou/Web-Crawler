@@ -96,11 +96,14 @@ public class WebCrawler {
 				    	}
 				    }
 				}
-			} 
+			}
+			
+			catch (IllegalArgumentException e) {
+				e.printStackTrace();
+			}
 			catch (NullPointerException e) {
 		        e.printStackTrace();
 		    }
-			
 			catch (HttpStatusException e) {
 				e.printStackTrace();
 			}

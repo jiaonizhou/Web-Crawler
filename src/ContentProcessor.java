@@ -20,20 +20,21 @@ public class ContentProcessor {
    int optStart;
    int optEnd;
 
-   public ContentProcessor() throws IOException {
+   public ContentProcessor(String fileName) throws IOException {
       this.finalText = "";
       this.tokenPosition = 0;
       this.tokens = new ArrayList<>();
       this.optStart = 0;
       this.optEnd = 0;
 
-      readInput();
+      readInput(fileName);
       setTagCountLookUp();
       findOptimum();
       generateFinalText();
       tokensToString();
    }
 
+   /*
    public void readInput2() throws IOException {
       File input = new File("/Users/hanzili/Desktop/aboutscu.html");
       Document doc = Jsoup.parse(input, "UTF-8", "http://example.com/");
@@ -42,10 +43,10 @@ public class ContentProcessor {
       System.out.println(allTags.toString());
 
    }
+   */
 
-   public void readInput() throws IOException {
-      String fileName = "/Users/hanzili/Desktop/aboutscu.html";
-
+   public void readInput(String fileName) throws IOException {
+      //fileName = "/Users/hanzili/Desktop/aboutscu.html";
       FileReader fileReader = new FileReader(fileName);
       String content = "";     
       int i ;
@@ -55,9 +56,7 @@ public class ContentProcessor {
       }
 
       //clean this HTML to avoid cross-site scripting (XSS)
-      String safeContent1 = Jsoup.clean(content, Whitelist.basic());
-      //String safeContent = content;
-      
+      String safeContent1 = Jsoup.clean(content, Whitelist.basic());      
       String safeContent = safeContent1.replaceAll("&nbsp", "");
       
       i = 0;

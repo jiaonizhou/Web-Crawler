@@ -12,7 +12,8 @@ public class ContentProcessorTest
    @Test
    public void test() throws IOException
    {
-      ContentProcessor test = new ContentProcessor();
+      String fileName = "/Users/hanzili/Desktop/aboutscu.html";
+      ContentProcessor test = new ContentProcessor(fileName);
    }
 
 }

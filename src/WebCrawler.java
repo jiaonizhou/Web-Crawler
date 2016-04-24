@@ -162,11 +162,14 @@ public class WebCrawler {
 						frontier.add(link);
 				    }
 				}
-			} 
+			}
+			
+			catch (IllegalArgumentException e) {
+				e.printStackTrace();
+			}
 			catch (NullPointerException e) {
 		        e.printStackTrace();
 		    }
-			
 			catch (HttpStatusException e) {
 				e.printStackTrace();
 			}

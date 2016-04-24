@@ -5,11 +5,17 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
+import java.util.Set;
 
 import org.jsoup.Connection;
 import org.jsoup.HttpStatusException;
@@ -17,6 +23,9 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
+import crawlercommons.robots.BaseRobotRules;
+import crawlercommons.robots.SimpleRobotRulesParser;
 
 
 public class WebCrawler {
@@ -31,12 +40,68 @@ public class WebCrawler {
 			"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.112 Safari/535.1";
 	public static int count = 0;
 	
+	public static boolean isCrawlAllowed(String urlStr) {
+		if (urlStr == null || urlStr.equals("")) {
+			return false;
+		}
+		try {
+			URL url = new URL(urlStr);
+
+			String hostname = url.getHost();
+			String robotUrlStr = url.getProtocol() + "://" + hostname + "/robots.txt";
+			URL robotUrl = new URL(robotUrlStr);
+			HttpURLConnection conn = (HttpURLConnection)robotUrl.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setDoOutput(true);
+			BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			String robotsTxt = "";
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				robotsTxt += line + "\r\n";
+			}
+			
+			SimpleRobotRulesParser parser = new SimpleRobotRulesParser();
+			BaseRobotRules rules = parser.parseContent(hostname, robotsTxt.getBytes("UTF-8"),
+					"text/plain", UserAgent);
+			return rules.isAllowed(urlStr);
+			
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+			return false;
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} catch (ProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return true;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return true;
+		}
+	}
+	
+	public static String canonicalUrl(String urlStr) {
+		try {
+			URL url = new URL(urlStr);
+			return url.getProtocol() + "://" + url.getHost() + url.getPath();
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			return "";
+		}
+	}
+	
 	public static void findURL(String seed, int max, String domain) throws IOException {
 		frontier.add(seed);
 		while (visited.size() < max && !frontier.isEmpty()) {
 			try {
 				String curr = frontier.poll();
-				System.out.println(curr);
+				
+				if (!isCrawlAllowed(curr)) {
+					continue;
+				}
 				
 				// get response code
 				Connection.Response response = Jsoup.connect(curr).userAgent(UserAgent).timeout(10000).execute();
@@ -53,23 +118,15 @@ public class WebCrawler {
 					hpTitle.put(curr, title);
 					
 					// save HTML to repository folder
-					URL url;
-					BufferedReader in;
-					String inputLine;
 					String filename;
 					FileWriter out;
 					BufferedWriter bw;
 					filename = "repository/" + count + ".html";
 					out = new FileWriter(filename);
 					bw = new BufferedWriter(out);
-					url = new URL(curr);
-					in = new BufferedReader(new InputStreamReader(url.openStream()));
-					while ((inputLine = in.readLine()) != null) {
-						bw.write(inputLine);
-					}
+					bw.write(doc.toString());
 					bw.close();
-					in.close();
-					
+										
 					// get image count
 					Elements images = doc.getElementsByTag("img");
 					int imgCount = images.size();
@@ -81,19 +138,28 @@ public class WebCrawler {
 					hpLink.put(curr, linkCount);
 					
 					// save crawled links to frontier
+					List<String> urls = new ArrayList<String>();
 					for (Element link: links) {
-						String absHref = link.attr("abs:href");
+						String absHref = canonicalUrl(link.attr("abs:href"));
 						if (domain != null) {
 							if(link.attr("abs:href").contains(domain)) {
 								if (!visited.contains(absHref)) {
-									frontier.add(absHref);
+									urls.add(absHref);
 								}
 							}
 				    	} else {
 				    		if (!visited.contains(absHref)) {
-				    			frontier.add(absHref);
+				    			urls.add(absHref);
 				    		}
 				    	}
+					}
+					
+					// de-dup
+					Set<String> urlSet = new HashSet<String>();
+					urlSet.addAll(urls);
+
+					for (String link : urlSet) {
+						frontier.add(link);
 				    }
 				}
 			} 

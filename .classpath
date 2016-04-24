@@ -2,6 +2,9 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/Users/jiaonizhou/Documents/SCU/3rd quarter/COEN 272 Web Information Retrieval/Project1/jsoup-1.8.3.jar"/>
+	<classpathentry kind="lib" path="crawler-commons-0.6.jar"/>
+	<classpathentry kind="lib" path="jsoup-1.8.3.jar"/>
+	<classpathentry kind="lib" path="slf4j-api-1.7.21.jar"/>
+	<classpathentry kind="lib" path="slf4j-simple-1.7.21.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -27,13 +27,15 @@ public class WebCrawler {
 	
 	public static void findURL(String seed, int max, String domain) throws IOException {
 		try {
+			// connect seed, extract title, increase count, put seed into frontier
 			Document doc = Jsoup.connect(seed).get();
 			String title = doc.title();
 			count ++;
 			frontier.add(seed);
 			hpCount.put(seed, count);
 			hpTitle.put(seed, title);
-					
+			
+			// save HTML to repository folder
 			URL url;
 			BufferedReader in;
 			String inputLine;
@@ -51,18 +53,22 @@ public class WebCrawler {
 			bw.close();
 			in.close();
 			
+			// get response code
 			Connection.Response response = Jsoup.connect(seed).execute();
 			int responseCode = response.statusCode();
 			hpResponse.put(seed, responseCode);
 			
+			// get image count
 			Elements images = doc.getElementsByTag("img");
 			int imgCount = images.size();
 			hpImage.put(seed, imgCount);
 			
+			// get link count
 			Elements links = doc.select("a[href]");
 			int linkCount = links.size();
 			hpLink.put(seed, linkCount);
 			
+			// spread the crawler
 			for (Element link: links) {
 				if (frontier.size() >= max) {
 					return;
@@ -85,6 +91,7 @@ public class WebCrawler {
 	}
 	
 	public static void main(String args[]) throws IOException {
+		// read in seed, max, domain
 		FileReader in = new FileReader("specification.csv");
 		BufferedReader br = new BufferedReader(in);
 		String line = null;
@@ -101,11 +108,14 @@ public class WebCrawler {
 		}
 		in.close();
 		
+		// create repository directory
 		File dir = new File("repository");
 		dir.mkdir();
-
+		
+		// run findURL
 		findURL(seed, max, domain);
 		
+		// output to report.html
 		FileWriter out = new FileWriter("report.html");
 		BufferedWriter bw = new BufferedWriter(out);
 		bw.write("<!DOCTYPE html>\n");
@@ -137,6 +147,5 @@ public class WebCrawler {
 		bw.write("<html>\n"); 
 		bw.close();
 	}
-
 }
    

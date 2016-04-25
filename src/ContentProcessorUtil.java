@@ -1,5 +1,10 @@
 package webCrawler.src;
 
+/*
+ * this file is used to generate random file number 
+ * and calculate the statistics of noise removal
+*/
+
 import java.io.IOException;
 import java.util.Random;
 
@@ -10,7 +15,7 @@ public class ContentProcessorUtil {
       System.out.println(fileIndexInt);
       String fileName = "/Users/hanzili/Desktop/repository/" 
       + Integer.toString(fileIndexInt) + ".html";
-      ContentProcessor test = new ContentProcessor(fileName);
+      ContentProcessor oneContent = new ContentProcessor(fileName);
    }
    
    // returns a random number between min and max, inclusive

@@ -1,5 +1,9 @@
 package webCrawler.src;
 
+/*
+ * Token object for noise removal 
+ */
+
 public class Token {
    private String tokenString;
    private int position;

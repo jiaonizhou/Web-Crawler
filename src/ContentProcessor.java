@@ -1,5 +1,9 @@
 package webCrawler.src;
 
+/*
+ * Noise Removal
+ */
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +12,6 @@ import org.jsoup.*;
 import org.jsoup.nodes.Document;
 import org.jsoup.safety.Whitelist;
 import org.jsoup.select.Elements;
-
 
 public class ContentProcessor {
 
@@ -26,10 +29,8 @@ public class ContentProcessor {
       this.tokens = new ArrayList<>();
       this.optStart = 0;
       this.optEnd = 0;
-
-      //read input file from the repository
-      readInput(fileName);
- 
+      
+      readInput(fileName); //read input file from the repository
       setTagCountLookUp();
       findOptimum();
       generateFinalText();
@@ -48,7 +49,6 @@ public class ContentProcessor {
    */
 
    public void readInput(String fileName) throws IOException {
-      //fileName = "/Users/hanzili/Desktop/aboutscu.html";
       FileReader fileReader = new FileReader(fileName);
       String content = "";     
       int i ;
@@ -60,10 +60,10 @@ public class ContentProcessor {
       //clean this HTML to avoid cross-site scripting (XSS)
       String safeContent1 = Jsoup.clean(content, Whitelist.basic());      
       String safeContent = safeContent1.replaceAll("&nbsp", "");
+      
       System.out.println(safeContent);
       System.out.println();
       System.out.println();
-      
       
       i = 0;
       int textStartChar = i;
@@ -221,4 +221,54 @@ public class ContentProcessor {
 
       System.out.println(finalText);
    }
+
+   public String getFinalText() {
+      return finalText;
+   }
+
+   public void setFinalText(String finalText) {
+      this.finalText = finalText;
+   }
+
+   public int getTokenPosition() {
+      return tokenPosition;
+   }
+
+   public void setTokenPosition(int tokenPosition) {
+      this.tokenPosition = tokenPosition;
+   }
+
+   public ArrayList<Token> getTokens() {
+      return tokens;
+   }
+
+   public void setTokens(ArrayList<Token> tokens) {
+      this.tokens = tokens;
+   }
+
+   public HashMap<Integer, Integer> getTagCountLookUp() {
+      return tagCountLookUp;
+   }
+
+   public void setTagCountLookUp(HashMap<Integer, Integer> tagCountLookUp) {
+      this.tagCountLookUp = tagCountLookUp;
+   }
+
+   public int getOptStart() {
+      return optStart;
+   }
+
+   public void setOptStart(int optStart) {
+      this.optStart = optStart;
+   }
+
+   public int getOptEnd() {
+      return optEnd;
+   }
+
+   public void setOptEnd(int optEnd) {
+      this.optEnd = optEnd;
+   }
+   
+   
 }

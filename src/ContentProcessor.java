@@ -33,7 +33,7 @@ public class ContentProcessor {
       setTagCountLookUp();
       findOptimum();
       generateFinalText();
-      tokensToString();
+      //tokensToString();
    }
 
    /*
@@ -60,6 +60,10 @@ public class ContentProcessor {
       //clean this HTML to avoid cross-site scripting (XSS)
       String safeContent1 = Jsoup.clean(content, Whitelist.basic());      
       String safeContent = safeContent1.replaceAll("&nbsp", "");
+      System.out.println(safeContent);
+      System.out.println();
+      System.out.println();
+      
       
       i = 0;
       int textStartChar = i;

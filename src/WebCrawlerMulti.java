@@ -52,7 +52,7 @@ public class WebCrawlerMulti implements Runnable{
          String filename;
          FileWriter out;
          BufferedWriter bw;
-         filename = "repository/" + count + ".html";
+         filename = "/Users/hanzili/Desktop/repository/" + count + ".html";
          out = new FileWriter(filename);
          bw = new BufferedWriter(out);
          url = new URL(seed);

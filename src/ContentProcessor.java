@@ -12,13 +12,13 @@ import org.jsoup.select.Elements;
 
 public class ContentProcessor {
 
-   String finalText;
-   int tokenPosition;
+   String finalText; // main content after noise removal
+   int tokenPosition; // keep track of token position when doing tokenizing
    ArrayList<Token> tokens;
    // (key, value) : (position of token, number of tags below the position)
    HashMap<Integer, Integer> tagCountLookUp = new HashMap<>(); 
-   int optStart;
-   int optEnd;
+   int optStart; // when doing optimizing, the start token position
+   int optEnd; // when doing optimizing, the end token position
 
    public ContentProcessor(String fileName) throws IOException {
       this.finalText = "";
@@ -27,7 +27,9 @@ public class ContentProcessor {
       this.optStart = 0;
       this.optEnd = 0;
 
+      //read input file from the repository
       readInput(fileName);
+ 
       setTagCountLookUp();
       findOptimum();
       generateFinalText();

@@ -1,0 +1,16 @@
+BBEdit
+Eudora
+Microsoft Word X
+Microsoft Word 2004
+Microsoft Word 2008
+Mori
+OmniOutliner
+OmniOutliner Pro
+Pages
+Safari
+Smultron
+SubEthaEdit
+Tex-Edit Plus
+TeXShop
+TextEdit (Default)
+TextWrangler

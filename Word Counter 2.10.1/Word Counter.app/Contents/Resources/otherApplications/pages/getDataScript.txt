@@ -1,0 +1,43 @@
+set allText to ""
+tell application "Pages"
+	try
+		set allText to selection of document 1 of window 1 as string
+	on error
+		--do nothing
+	end try
+	try
+		if (count of characters of allText) < 1 then
+			
+			
+			try
+				set allText to (allText & (body text of document 1 of window 1 as string)) & "
+"
+			on error
+				--do nothing
+			end try
+			
+			repeat with i from 1 to count of shapes of document 1 of window 1
+				try
+					set allText to allText & (object text of shape i of document 1 of window 1) & "
+"
+				on error
+					--do nothing
+				end try
+			end repeat
+			
+			
+			repeat with i from 1 to count of text box of document 1 of window 1
+				try
+					set allText to allText & (object text of text box i of document 1 of window 1) & "
+"
+				on error
+					--do nothing
+				end try
+			end repeat
+			
+		end if
+	on error
+		--do nothing
+	end try
+end tell
+return allText

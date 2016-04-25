@@ -1,0 +1,3 @@
+tell application "SubEthaEdit"
+contents of plain text of document 1
+end tell

@@ -1,0 +1,3 @@
+tell application "OmniOutliner Professional"
+	set theSelectedRows to selected rows of front document	set textToReturn to text of cells of item 1 of theSelectedRows as string
+	return textToReturnend tell

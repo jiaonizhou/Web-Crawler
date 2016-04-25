@@ -1,0 +1,3 @@
+tell application "Microsoft Word"
+activate
+end tell

@@ -1,0 +1,9 @@
+asp
+css
+java
+js
+jsp
+php
+pl
+rb
+xml

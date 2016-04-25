@@ -1,0 +1,3 @@
+tell application "Safari"
+return text of document 1 as string
+end tell

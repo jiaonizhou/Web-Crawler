@@ -1,0 +1,7 @@
+TextEdit
+TextEdit
+TextEdit
+TextEdit
+TextEdit
+TextEdit
+Note: TextEdit is the default application that comes with OS X.

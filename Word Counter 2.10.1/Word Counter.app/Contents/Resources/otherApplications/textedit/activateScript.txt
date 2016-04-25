@@ -1,0 +1,3 @@
+tell application "TextEdit"
+activate
+end tell

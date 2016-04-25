@@ -1,0 +1,3 @@
+tell application "Mori"
+set current_entry to current entry of front documentset this_data to note of current_entry as stringreturn this_data
+end tell

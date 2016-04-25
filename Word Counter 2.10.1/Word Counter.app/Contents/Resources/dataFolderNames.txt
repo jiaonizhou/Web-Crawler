@@ -1,0 +1,16 @@
+bbedit
+eudora
+mswordx
+msword2004
+msword2008
+mori
+omnioutliner
+omnioutlinerpro
+pages
+safari
+smultron
+subethaedit
+texeditplus
+texshop
+textedit
+textwrangler

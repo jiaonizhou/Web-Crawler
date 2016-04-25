@@ -1,0 +1,1 @@
+tell application "Microsoft Word"	set textToReturn to ""	set rangeOfText to create range active document start (selection start of selection) end (selection end of selection)	set textToReturn to content of rangeOfText	if (count of characters of textToReturn) < 1 then		set textToReturn to content of words of text object of active document	end if	return textToReturnend tell

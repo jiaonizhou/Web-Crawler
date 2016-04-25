@@ -1,0 +1,3 @@
+tell application "Microsoft Entourage"
+return content of window 1 as string
+end tell

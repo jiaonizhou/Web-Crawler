@@ -1,0 +1,3 @@
+tell application "Eudora"
+activate
+end tell

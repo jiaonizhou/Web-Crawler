@@ -1,0 +1,3 @@
+tell application "Tex-Edit Plus"
+activate
+end tell

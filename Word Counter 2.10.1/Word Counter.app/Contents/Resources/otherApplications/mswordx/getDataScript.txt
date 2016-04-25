@@ -1,0 +1,8 @@
+tell application "Microsoft Word"
+set documentWords to contents of document 1 as string
+if documentWords is equal to "missing value" then
+return ""
+else
+return documentWords
+end if
+end tell

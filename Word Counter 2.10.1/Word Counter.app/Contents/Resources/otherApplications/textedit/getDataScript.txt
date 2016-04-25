@@ -1,0 +1,3 @@
+tell application "TextEdit"
+return text of document 1 as string
+end tell

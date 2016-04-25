@@ -1,0 +1,7 @@
+Microsoft Word X
+MS Word X
+MS Word X
+Microsoft Word X
+Microsoft Word X
+MS Word X
+Note: Counts are performed on the most recently created document, even if it is not the topmost document.

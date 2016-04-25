@@ -1,0 +1,7 @@
+Eudora
+Eudora
+Eudora
+Eudora
+Eudora
+Eudora
+Note: Word Counter will count all the text in the body of the e-mail for the current message. (Tested with Eudora version 6.2).

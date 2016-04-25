@@ -1,0 +1,3 @@
+tell application "TextWrangler"
+return contents of document 1
+end tell

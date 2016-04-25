@@ -1,0 +1,14 @@
+--works with front most window
+
+set textToReturn to ""
+try
+tell application "Tex-Edit Plus"
+	if (window 1 exists) then
+		set textToReturn to text of window 1
+	else
+	return textToReturn
+	end if
+end tell
+on error
+return textToReturn
+end try

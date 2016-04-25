@@ -1,0 +1,7 @@
+SubEthaEdit
+SubEthaEdit
+SubEthaEdit
+SubEthaEdit
+SubEthaEdit
+SubEthaEdit
+Note: SubEthaEdit is a text editor from The Coding Monkeys <http://www.codingmonkeys.de/>.  The frontmost document is counted.

@@ -1,0 +1,870 @@
+{\rtf1\ansi\ansicpg1252\cocoartf949\cocoasubrtf540
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f0\b\fs26 \cf0 Word Counter\
+version 2.10.1\
+
+\b0 \
+
+\b About Word Counter\
+
+\b0 \
+Word Counter is a Macintosh OS X application that performs a word count and a character count, but it can do much more.  It can be used independently or in conjunction with other applications such as TextEdit, Microsoft Word, Pages, TextWrangler, and others.\
+\
+Word Counter can automatically update the count based on a user-defined time interval.  It can show the progress achieved towards a set goal for the total number of words and characters. It also can perform bulk counts on multiple files and folders simply by dropping them onto the window.  Word Counter can count the number of times a particular word appears in a document.  It can even create a sortable summary table of all words in the document, with the number of times each word appears and the length of each word. Word Counter can also calculate estimates for readability statistics using the well known Flesch-Kincaid readability formula and many others.\
+\
+Word Counter can handle various file types including plain text (txt, text), rich text (rtf, rtfd), Hypertext Markup Language (htm, html), Microsoft Word (doc,docx), Microsoft Word XML (wordml), Apple's web archive (webarchive), the Adobe Portable Document Format (pdf), and others.  This program may be useful for writing a manuscript or an abstract with a strict limit on the number of words or characters allowed.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\i \cf0 					A screen shot of the main window\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\i0 \cf0 \
+
+\b System Requirements\
+
+\b0 \
+Word Counter has been tested on OS X 10.5.8 and 10.6.8.\
+
+\b \
+Installation\
+
+\b0 \
+Unzip the archive and then copy the folder anywhere on your computer. The ideal location for Word Counter is in your Applications folder.\
+\
+
+\b Basic Use\
+\
+
+\b0 Using Word Counter is easy.  Simply type, paste, or drag text into the main word counter window, then press the "Count Words" button.  Word Counter will provide the word and character count for the text, and it will also count the number of instances of a specific word or phrase if specified (see below).  Word and character counts are independent.  Thus, if you choose to ignore a word based on some of the preference settings available, the characters from those words will still be included in the overall count.\
+\
+
+\b Instances Count\
+\
+
+\b0 Word Counter can provide a total for the number of times a certain word or phrase appears.  This count will be displayed alongside the total count for words and characters. \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\i \cf0 			A screen shot of the instances window
+\i0 \
+\
+To perform an instances count, open the Instances Count window from the main menu and type in the desired word or phrase. Then choose the "Count Words" option. If the text area in the instances window is blank, Word Counter will return a count of 0.  You can also choose whether Word Counter should consider the number of instances in a case-sensitive or case-insentive manner.  With a case-sensitive count, the word "with" would be counted only once in this sentence if the search was case-sensitive since the first instance has a capital "W".  In a case-insensitive count it would be counted twice in the preceding sentence since the case would be ignored.  Additionally, Word Counter will consider any subset of text when it counts instances.  Therefore, the word "count" would have two instances (case-insensitive) in the preceding sentence since it appears in both "Counter" and "counts".\
+\
+If a word is entered in the Instacnes Count window it will be counted even if it otherwise would be ignored based on the word length or minor word preferences.\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 Word Frequencies\
+\
+
+\b0 Word Counter also provides an interesting feature that summarizes the frequency of every word in a document.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\i \cf0 	\
+			A screen shot of the word frequency window
+\i0 \
+\
+To use the frequency option, the document to be summarized must be open in either the main Word Counter window or in the TextEdit window (depending on the current data source for the counts).  The Word Frequency window can be accessed from the main menu.  Press the Count button to begin the analysis.  Once the count is complete, Word Counter will display every word that appears in the document as well as how many times each word appears and how long each word is.  Columns can be sorted by clicking on the column name/column header.  This can be useful if you want to know how many words longer than 10 characters you are using, or to see if your choice of words may be repetitive.\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 Readability Statistics\
+\
+
+\b0 Word Counter can provide various statistics to help judge the readability of text. \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\i \cf0 \
+A screen shot of the readability statistics window\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\i0 \cf0 \
+Many formulas exist to judge readability and caution must be exercised when applying a readability test to a document.  Some tests are more appropriate for certain types of documents and it is important to think carefully when choosing a test.  Some tests are better for text written at a grade school level, some are better for technical manuals, and some are considered flexible enough to judge the readability of almost any type of text.\
+\
+Word Counter makes estimates for various elements of the text including the number of syllables and number of sentences.  These estimates might deviate from counts done manually.  In addition, even though many of the readability scores require a short passage of around 100 words, Word Counter will make its estimates based on the entire text.  This should help average out any of the discrepancies in the estimates.  In testing Word Counter and comparing the results to other online tools, some of the estimates were found to vary widely, probably because of differing underlying computer algorithms to make the estimates.  Note that Word Counter includes all of the text every time it performs readability calculations, regardless of the preferences set for ignoring words based on length or the exclusion list.\
+\
+Keep in mind that all of the measures are simply standardized ways to judge the readability of text and none are perfect, and their pros and cons have been debated for years.  A 1939 article by Irving Lorge in 
+\i The Elementary English Review
+\i0  appropriately states: "It seems reasonable to conclude that reading difficulty is a difficult criterion to define."  If you would like to learn more about readability, there are multiple online references describing these measures and the appropriate uses for them.  A very good reference is 
+\i The Principles of Readability
+\i0 , by William H. DuBay.  \
+\
+Listed below are the various readability statistics that Word Counter provides, including the formulas used to calculate the results and the scoring references.  These may deviate from other sources, and if you have any corrections or suggestions please contact the author of Word Counter.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf0 \ul \ulc0 Abbreviations\ulnone \
+	C		total characters in words\
+	DW		total difficult words (based on the 3,000 Dale-Chall Word List)\
+	EW		total easy words (based on the 3,000 Dale-Chall Word List)\
+	LW		long words (words with 7 or more characters)\
+	M		total monosyllabic words (words with 1 syllable)\
+	PSY		total polysyllabic words (words with 3 or more syllables)\
+	S		total sentences\
+	SW		short words (word with 3 or fewer characters)\
+	SY		total syllables\
+	U		unit sections, which are phrases ending in ! ? . : ; -\
+	UDW	total unique difficult words not in the Spache Word List\
+	UW		total unique words\
+	W		total words\
+\
+\
+\ul Automated Readability Index\ulnone \
+	(4.71 x (C / W)) + (0.5 x (W / S)) - 21.43\
+\
+\ul Coleman-Liau Index\ulnone \
+	(5.89 x (C / W)) - (0.3 x (S / W)) - 15.8\
+\
+\ul Dale-Chall Readability Index\ulnone \
+	(W / S x 0.0496) + (DW / W x 100 x 0.1579) + 3.6365\
+\
+\ul Dale-Chall Grade Level\ulnone \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\i \cf0 	Scale:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\i0 \cf0 	\uc0\u8804  4.9: 4 and below\
+	5.0-5.9: 5-6\
+	6.0-6.9: 7-8\
+	7.0-7.9: 9-10\
+	8.0-8.9: 11-12\
+	9.0-9.9: 13-15\
+	\uc0\u8805  10: 16\
+\
+\ul Degrees of Reading Power\ulnone \
+	(100 x (1 - (0.886593 - (C/W) x 0.08364) + (0.161911 x (EW/W)
+\fs20 \super 3
+\fs26 \nosupersub ) - (0.021401 x (W/S)) + (0.000577 x (W/S)
+\fs20 \super 2
+\fs26 \nosupersub ) - (0.000005 x (W/S)
+\fs20 \super 3
+\fs26 \nosupersub ))))\
+\
+\ul Degrees of Reading Power Grade Level\ulnone \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\i \cf0 	Scale:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\i0 \cf0 	< 40: Less than 1\
+	40-43: 1\
+	44-47: 2\
+	48-49: 3\
+	50-51: 4\
+	52-53: 5\
+	54-55: 6\
+	56-57: 7\
+	58-59: 8\
+	60-61: 9\
+	62-63.0: 10\
+	63.1 - 65: 11-12\
+	> 65: Greater than 12\
+\
+\ul Fang Easy Listening Formula\ulnone \
+	(SY - W) / S\
+\
+\ul Fang Easy Listening Interpretation\ulnone \
+	
+\i Scale
+\i0 :\
+	< 12: Easy\
+	13-20: Standard\
+	> 20 Difficult\
+\
+\ul Farr-Jenkins-Patterson Score\
+\ulnone 	(159.9 x (M/W)) - (1.015 x (W/S)) - 31.517\
+\
+\ul Farr-Jenkins-Patterson Reading Ease\ulnone \
+	
+\i Scale
+\i0 :\
+	0-29: Very Difficult\
+	30-50: Difficult\
+	51-59: Fairly Difficult\
+	60-69: Standard\
+	70-79: Fairly Easy\
+	80-89: Easy\
+	>= 90: Very Easy\
+\
+\ul Flesch Reading Ease Score\ulnone \
+	206.835 - (1.015 x (W / S)) - (84.6 x (SY / W))\
+\
+\ul Flesch Reading Ease\ulnone \
+	
+\i Scale
+\i0 :\
+	0-29: Very Difficult\
+	30-50: Difficult\
+	51-59: Fairly Difficult\
+	60-69: Standard\
+	70-79: Fairly Easy\
+	80-89: Easy\
+	>= 90: Very Easy\
+\
+\ul Flesch Reading Ease Grade Level\ulnone \
+	
+\i Scale:
+\i0 \
+	0-29: College Graduate\
+	30-49: 13 to 16 (College)\
+	50-59: 10-12\
+	60-69: 8-9\
+	70-79: 7\
+	80-89: 6\
+	90-100: 5\
+\
+\ul Flesch-Kincaid Grade Level\ulnone \
+	0.39 x (W / S) + 11.8 x (SY / W) - 15.59\
+\
+\ul Flesch-Kincaid Reading Age\ulnone \
+	0.39 x (W / S) + 11.8 x (SY / W) - 10.59\
+\
+\ul Fry Readability Grade Level\ulnone \
+	Please refer to chart, many of which are available online\
+\
+\ul Fry Readability Reading  Age\ulnone \
+	Please refer to chart, many of which are available online\
+\
+\ul FORCAST Grade Level\ulnone \
+	20 - (M / ((W / 150) x 10))\
+\
+\ul FORCAST Reading Age\ulnone \
+	25 - (M / ((W / 150) x 10))\
+\
+\ul Gunning Fog Index (FOG)\ulnone \
+	0.4 x ((W / S) + (PSY / W x 100))\
+\
+\ul Gunning Fog Reading Age\ulnone \
+	(0.4 x ((W / S) + (PSY / W x 100))) + 5\
+\
+\ul Henshall Formula\
+	\ulnone -22.6 + (23.1 x [Farr-Jenkins-Patterson Score]) - (17.2 x [Gunning Fog Index])\
+\
+\ul Johnson Readability\ulnone \
+	((W - M) / W) x 100\
+\
+\ul Johnson Grade Level\
+\ulnone 	
+\i Scale:\
+	
+\i0 \uc0\u8804  14: Kindergarten or less\
+	14.1 - 16.1: 1\
+	16.2 - 18.0: 2\
+	18.1 - 20.2: 3\
+	20.3 - 23.2: 4\
+	23.3 - 25.1: 5\
+	25.2 - 26.5: 6\
+	26.6 - 28.3: 7\
+	> 28.3: 8 or higher\
+\
+\ul Lexical Density\ulnone \
+	UW / W x 100\
+\
+\ul Laesbarhedsindex (LIX) Index\ulnone \
+	(W / S) + (100 x LW / W)\
+\
+\ul Laesbarhedsindex (LIX) Readability\ulnone \
+	
+\i Scale:
+\i0 \
+	0-24: Very Easy\
+	25-34 Easy\
+	35-44 Standard\
+	45-54 Difficult\
+	> 55: Very difficult\
+\
+\ul Laesbarhedsindex (LIX) Grade Level\ulnone \
+	
+\i Scale:
+\i0 \
+	< 34: Less Than 4\
+	34 - 37: 5\
+	38-40: 6\
+	41-43 7\
+	44 -47: 8\
+	48-50: 9\
+	51-53: 10\
+	54-56: 11\
+	\uc0\u8805  57: More than 11\
+\
+\ul Linsear Write Readability\ulnone \
+	((W - PSY) + (PSY x 3)) / S\
+	If result > 20, then divide by 2; If result is <= 20, subtract 2, then divide by 2\
+\
+\ul McAlpine EFLAW\'a9 Test\ulnone \
+	(W + SW) / S\
+\
+\ul McAlpine EFLAW\'a9 Readability\ulnone \
+	
+\i Scale:\
+	
+\i0 1-20: Easy\
+	21-25: Quite Easy\
+	26-29: Mildly Difficult\
+	\uc0\u8805  30: Very Confusing\
+\
+\ul Miyazaki EFL Readability Index\ulnone \
+	164.935 - (18.792 x (C/W)) - (1.916 x (W/S))\
+\
+\ul Power-Sumner-Kearl Grade Level\ulnone \
+	(0.778 x W / S) + (0.455 x SY / W x 100) - 2.2029\
+\
+\ul Power-Sumner-Kearl Reading Age\
+\ulnone 	(0.778 x W / S) + (0.455 x SY / W x 100) + 2.7971\
+\
+\ul Rate Index (RIX\ulnone )\
+	LW / S\
+\
+\ul Rate (RIX) Grade Level\ulnone \
+	
+\i Scale:
+\i0 \
+	0.00 - 0.19: 1\
+	0.20 - 0.49: 2\
+	0.50 - 0.79: 3\
+	0.80 - 1.29: 4\
+	1.30 - 1.79: 5\
+	1.80 - 2.39: 6\
+	2.40 - 2.99: 7\
+	2.30 - 3.69: 8\
+	3.70 - 4.49: 9\
+	4.50 - 5.29: 10\
+	5.30 - 6.19: 11\
+	6.20 - 7.19: 12\
+	\uc0\u8805  7.2: College\
+\
+\ul SMOG Score\ulnone \
+	3.1291 + (1.043 x square root (PSY / S x 30))\
+\
+\ul SMOG Index\ulnone \
+	3.0 + nearest perfect square (PSY / S x 30)\
+\
+\ul SMOG Reading Age\ulnone \
+	5.0 + 3.0 + nearest perfect square (PSY / S x 30)\
+\
+\ul Spache Grade Level (Original)\ulnone \
+	(0.141 x (W/S)) + (0.086 x (UDW / W) x 100) + 0.839\
+\
+\ul Spache Grade Level (Revised)\ulnone \
+	(0.121 x (W/S)) + (0.082 x (UDW / W) x 100) + 0.659\
+\
+\ul Wheeler Smith Index\ulnone \
+	((W - M) / U) x 10\
+\
+\ul Wheeler Smith Grade Level\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\i \cf0 	\ulnone Scale:\
+	
+\i0 < 4.0: Pre-Kindergarten
+\i \
+	
+\i0 4.0 - 8.0: Kindergarten\
+	8.1 - 11.5: 1\
+	11.6 - 19.0: 2\
+	19.1 - 26.5: 3\
+	26.6 - 34.5: 4\
+	> 34.5: Greater than 4\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 Progress Tracker\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 Using the Progress Tracker feature you can set a goal for the total number of words or characters you wish to type.  Word Counter will then display the progress towards that goal in the small, floating Progress Tracker window.  By default, a yellow warning icon will appear if you are at or above 90% of the goal and a red warning icon will appear if you exceed your goal (above 100%).\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\fs24 \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\i \cf0 Type in a goal for Words, Characters, or Instances to track your progress\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\i0 \cf0 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\i \cf0 An example of the progress being tracked:  the red icon lets you know that the goal has been exceeded whereas the yellow icon lets you know that you are within 90% of the goal
+\i0 \
+\
+\
+\
+
+\i To change the defaults for the percentages for which the yellow or red icons should appear, click in the area shown above\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\i0 \cf0 \
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\i \cf0 A screen shot of the window where you can set the percentages for the limits beyond which the yellow or red warning icons will appear\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\i0\fs26 \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 Using Word Counter with Other Applications
+\b0 \
+\
+Word Counter can be used in conjunction with various applications including TextEdit, Microsoft Word, Pages, TextWrangler, and others.  Simply click on the Word Counter icon on the main Word Counter window.  A small floating window will appear.  Word Counter will then count the text in the chosen application.  Apple's TextEdit application is the default, but you can change it to a different application in the Preferences section.  To have Word Counter return to counting the text in the main Word Counter window, simply close the floating counting window, or press the Count Words button on the main Word Counter window.\
+\
+If you are interested in having another program added to Word Counter's list of supported applications, please contact David Hanauer. Note that only certain AppleScript-aware applications are eligible for this functionality.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\i \cf0 The horizontal floating window for TextEdit documents\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf0 The vertical floating window for TextEdit documents\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\i0\b \cf0 Preferences\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 Word Counter has several user modifiable preferences that can be changed through the Preferences window.  Most options should be self-explanatory.  The "minor words" feature is described below.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\i \cf0 \
+											The preferences window\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\i0 \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 Minor Words\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 Word Counter can ignore minor words in the counts.  These are ignored for both the word and character counts.  This feature can be turned on or off in the preferences window.  Furthermore, you can edit the list of minor words by clicking on the "Edit List" button in the preferences window.  A screen shot of this window is below.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\fs24 \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+
+\i \cf0 		The window where the minor words list can be modified
+\i0\fs26 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 \
+\
+Bulk Counts\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 Word Counter can perform bulk counts on multiple files sequentially.  Results of the counts are displayed in a table as seen below.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\i \cf0 				The table that is displayed when multiple files are counted\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\i0 \cf0 Dropping more than one file, or a single folder, onto the Word Counter window will cause Word Counter to display the multiple file count window.  (Note:  More than one folder can also be dropped onto the window at the same time).  You can also display the multiple file count window by choosing it from the menu or pressing the associated keyboard shortcut.  A progress bar at the top of the window provides feedback about how far along Word Counter is in working through the files.  Each row in the table represents a single file.  The file name, word count, and character count are displayed.  Additionally, a running total of the counts for all of the files is shown at the bottom of the table.  The total number of files in the table is displayed in the window's title bar area.  To reset the running total and remove the files from the table, simply press the "Clear" button.  Otherwise, dropping more files onto the multiple file count window will cause the counts to be displayed in the table instead of the main window.  To learn more about any file in the table, simply double click on the file or choose the "More Info" option from the menu.  This will cause a small information window (see below) to be displayed which has details about the file, including it's entire file path.  If a file type that Word Counter does not handle is being handled by the multiple file count window, it is simply ignored silently so that the counts of the other appropriate files can proceed.  If Word Counter is unable to open or process any files, a warning message will be displayed when the counting is complete.\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\i \cf0 The More Info window, which displays details about a selected file in the multiple file count table\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\i0\b \cf0 Supported File Types\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 Word Counter can load numerous file types either into the main window or via bulk counts.  These include plain text (txt), rich text (rtf, rtfd),  Hypertext Markup Language (htm, html), Microsoft Word (doc, docx), Microsoft Word XML (wordml), OpenDocument Text (odt), Apple's web archive (webarchive), active server pages (asp), cascading style sheets (css), java (java), javascript (js), java server pages (jsp), hypertext preprocessor (php), perl (pl), ruby (rb), and extensible markup language (xml). For html documents, only those words that would normally appear on the web page are counted; for the other files related to programming languages, all of the words in the document are counted.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\i \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\i0\b \cf0 A note about how Word Counter works\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 \
+Word Counter only works for the English language.  It may (or may not) work for other languages, so I suggest you try it first before relying on it.  It is too difficult for me to ensure that the program works for any language other than English.\
+\
+Word Counter should generally be thought of as providing a very close estimate of the true word and character count, but counts may differ depending on what program is used.  Word Counter bases its word and character counts mainly on how AppleScript defines a word and a character.  This actually differs depending on the version of OS X that you use.  OS X 10.4 defines characters such as the ampersand ("&") as a word whereas OS X 10.5 does not.  Phrases such as "Mr. Watson -- come here!" will only result in 4 words using Word Counter.  Microsoft Word will consider that phrase to have 5 words since the dashes ("--") are separated on both side by white space. In the end the differences between the word counting features of different programs will likely be small, but it is best to try out a few short examples to make sure that this program works in the way you intended.\
+\
+You may sometimes notice a difference in counts in Word Counter when counting Microsoft Word documents depending on if you click the "Count Words" button from the floating window versus dropping a file onto the Word Counter window or performing a Bulk Count on multiple documents.  The reason is because the former method basic "asks" Microsoft Word for the words to count whereas the second method uses a different technology for extracting the Words.  Microsoft Word sometimes does not include all of the words in figures in the documents when performing a word count and this is reflected in the difference.\
+\
+Word Counter was written using a part of the Apple Xcode development environment known as AppleScript Studio.  This means that the application itself is written using the AppleScript programming/scripting language but also relies heavily on various unix programs (sed, tr, grep, and others) "under the hood" for some of the heavy-duty text manipulation.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 How much does Word Counter cost?\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 \
+Word Counter is free.\
+\
+However, comments would be most appreciated. For those that wish to make a donation, you can do so on the supermagnus.com website. Or, why not consider purchasing one of my screensavers which I sell to help cover web-hosting and development costs.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 Legal issues\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 \
+Word Counter is provided "as is" and no guarantee is made as to its function or any problems that occur as a result of its use.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 Warranty\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 \
+There is no warranty for this program.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 Known Issues\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 \
+* When Word Counter is unable to count a file due to an error, it will display a 0 (zero) for both the word and the character count.\
+* Sometimes, if Word Counter seems stuck on a small file that should appear in the multiple file count window, simply clicking on the window seems to "nudge" Word Counter to finish its task.  I have no idea why this occurs.\
+* Word Counter has occasionally crashed when a word count is performed on the Word Counter window and no text has been typed into it.\
+* Some of the text formatting options for rich text might not work in Word Counter. If they are needed the best alternative would be to use TextEdit to type and use Word Counter to count the words in the TextEdit window.\
+* The "Undo" option does not work extremely well in Word Counter, especially under "Plain Text" mode.\
+* Special characters are usually counted as separate words in Word Counter\
+* Word Counter may not launch properly at first (the icon will bounce a few times but no window will appear). This problem can usually be solved by fixing permissions on your computer and then re-downloading the Word Counter application.\
+* Currently, Word Counter can perform a count of a subset of text if it is highlighted only in the main Word Counter Window. Word Counts on TextEdit documents include all of the words, regardless of whether a subset of the text is highlighted.\
+* If a word count is conducted on a large volume of text, the count may fail if some of the "non-standard" options are chosen, such as the option to count words above a certain length.\
+* When printing or exporting a table (either the multiple file counts or the frequency counts) the order in which it appears will be the original alphabetical order, not the subsequent on-screen sorting of the table.\
+* Word Counter may provide incorrect counts on Microsoft Word documents that have comments or other edits included through the Track Changes feature.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 Additional Customization\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 Word counter has a few options where are modifiable but not through the Preferences window. These options will not likely be important to the average user:\
+\
+   1. Default fonts: You can change the default fonts for both the rich text and plain text options. You can find these option in the "Word Counter Preferences" file in your ~/Library/Preferences/ folder in your Home folder. Each line has a preference name on the left side (which you should not modify), and a varable on the right side, separated by an asterisk ("*"). To change the name of the plain text font, for example, you need to find the line that starts out with "PlainTextFont*" and then change the name of the font to the right of the asterisk. The default is Monaco, but you should be able to change it to any font you want, as long as you have the font installed on your computer. If you type something incorrectly you will likely cause an error in Word Counter.\
+\
+   2. Modifying CPU usage: Word Count, by default, updates itself internally every 1 second, which can cause more CPU usage than some might wish to allow. If you have the program set to update the count automatically every 1 second then there is no way to avoid this. However, if you don't use the option to automatically update the word count, then the extra CPU usage can be decreased substantially. To do so, locate the "Word counter Prefereces" file, as described above. Look for the preference name called" "autoCountSecondsDefault*" Modify the number to the right to change the number of second between when Word Counter auto-updates itself. The one downside to doing this is that if you do turn on the auto-word count option, you may have to wait longer until it turns on.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 Future Directions\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 \
+I now consider Word Counter to be a "mature" application.  It does its job very well and likely meets the needs of the average user.  Thus, there will be fewer changes and additions over time.  I have no intention for Word Counter to become a full-fledged text editor--there are already a lot of wonderful (and free) text editors available for OS X.\
+\
+The current version (2.10.1) will likely be the final version.  If anyone is interested in a partnership to develop the code further, possibly even as an open-source project, please contact David Hanauer.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 Version History\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 \ul Version 2.10.1 (February 16, 2013)\
+	\ulnone * Added support for TexShop\
+	* Added support for odt and docx files.\
+	* Better compatibility with OS X 10.6 (Snow Leopard)\
+	* Ignoring minor words are now handled appropriately in the frequency counts\
+	* Ignoring words less than a specific length are now handled appropriatel in the frequency counts\
+	* Hyphenated words are now handled appropriatey in the frequency counts\
+	* Minor interface enhancements\
+	* Fixed an error where a popup dialog saying "location 09b" would sometimes appear
+\b 	\
+
+\b0 \ul Version 2.10 (February 02, 2009):\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 \ulnone 	
+\b0 * Can now calculate multiple readability statistics such as Flesch-Kincaid\
+	* Multiple minor interface enhancements\
+	* Fixed an issue for counting words with non-standard hyphens such as the em dash and en dash\
+	* Fixed a problem with the order of the columns when exporting or printing multiple file counts
+\b \
+	
+\b0 * When counting text with Microsoft Word 2004, subsets of selected text can now be counted
+\b \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 \ul Version 2.9 (October 06, 2008):\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 \ulnone 	
+\b0 * Added an option to count an e-mail address as a single word or as separate words\
+	* Added support for Mori (a digital notebook application)
+\b \
+	
+\b0 * Significant speed increases for word and character counts, especially for large files\
+	* Ongoing feedback for file counts has now been removed due to speed increases\
+	* Significant speed increases for frequency counts\
+	* Significant speed increases for exporting multiple file counts and frequency counts to a file\
+	* Improved printing of multiple file counts and frequency counts\
+	* Minor interface enhancements\
+	* Fixed an error ["Can't make character id 0 into type reference. (-1700)"] that occurred when performing a frequency count in OS X 10.4\ul \
+\
+Version 2.8 (August 12, 2008):
+\b \
+\ulnone 	
+\b0 * Can now count text in PDF documents (OS X 10.5 or higher)\
+	* Can better handle certain Unicode characters\
+	* Fixed a rare error ["NSReceiverEvaluationScriptError: 4 (1)"] that occurred on some machines\
+	* Improved accuracy of the display of warning icons for the progress tracker tool\
+	* The program now provides ongoing counting feedback for large files\
+	* Minor interface enhancements\
+
+\b \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 \ul Version 2.7.1 (May 19, 2008):\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 \ulnone 	
+\b0 * Fixed a problem where Word Counter could no longer count words with Microsoft Word 2004\
+	* Added support for OmniOutliner and OmniOutliner Pro\
+	* Improved the overall accuracy of the word counts\
+	* Fixed the counting of hyphenated words, which was no longer working in Leopard\
+	* Improved handling of special characters such as en-dashes and em-dashes\
+	
+\b \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 \ul Version 2.7 (February 25, 2008):\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 \ulnone 	
+\b0 * Added the ability to set a goal for words and characters and to track progress towards that goal\
+	* Can now exclude minor words (e.g. "a", "of", "or", "the") from the count\
+	* Can now close the main window without quitting the program\
+	* Can now set default font sizes for the application\
+	* Can now set whether the application should use plain or rich text as a default\
+	* Now works with the BBEdit application\
+	* Improved preferences window\
+	* Improved handling of invalid file types when files are dropped into the main window\
+	* New Leopard (OS X 10.5) compatible application icon\
+	* Minor interface enhancements	
+\b \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 \ul Version 2.6 (December 19, 2007):\
+\ulnone 	* Word Counter is now OS X 10.5 (Leopard) compatible\
+	* When used with Pages Word Counter can now count all text or a subset of selected text\
+	* Now works with SubEthaEdit and Text-Edit Plus\
+	* Minor interface enhancements\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 \ul Version 2.5 (September 10, 2007):\
+	\ulnone * Launch time for the application should now be faster\
+	* Added a new preference option to either include or exclude line feeds/carriage returns in the character count\
+	* Works with more file types including 
+\fs24 asp, css, java, js, jsp, php, pl, rb, and xml\
+	* Improved the accuracy of the word counts.  Symbols such as _ ^ * ( = + | etc. no longer count as a word\
+	* Fixed an issue so that selected (highlighted) text in the Word Counter window could be counted separate from the full text\
+	* Fixed an error that could occur when loading a file over an existing one without saving changes to the original\
+	* Fixed an issue where a non-breaking space would count as a word instead of a space\
+	* Minor interface enhancements
+\b\fs26 \
+\
+
+\b0 \ul Version 2.4 (May 01, 2007)\ulnone :\
+	* Word Counter can now work with multiple applications including TextEdit, Microsoft Word, Pages, TextWrangler, and others.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 	
+\b0 * Minor interface changes\
+
+\b \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 \ul Version 2.3 (April 09, 2007):\
+	\ulnone * Added a feature that can now count the number of instances of a particular word in the text\
+	* Added a feature to provide a summary of the frequency and length of all words in the text\ul \
+\ulnone 	* Added Find/Replace as an option for editing text\
+	* Interface improvements\ul 	\
+	\ulnone * Fixed an AppleScript error that was displayed when dragging text onto the Word Counter window more than once\
+	* Fixed an issue where the vertical TextEdit Word Counter window sometimes displayed incorrectly as horizontal\
+	* Improved help documentation
+\b \
+\
+
+\b0 \ul Version 2.2.1 (February 12, 2007):\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 \ulnone 	
+\b0 * Fixed an error where the preferences might not be saved between launches\
+	* Improved the manner in which Word Counter handles RTFD files\
+
+\b \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 \ul Version 2.2 (September 26, 2006):\
+\ulnone 	* Added a vertical floating window to the already existing horizontal floating window that works in conjunction with TextEdit\ul \
+	\ulnone * The main Word Counter window now remembers its size and position better between launches\
+	* No longer experiences an error when a folder with a custom icon is dropped onto the Word Counter window\
+	* Fixed an error that occurred when only an empty folder was dropped onto the Word Counter window\
+	* Added an option to cancel the counting process in the Bulk Counts window\
+	* Minor interface changes\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 \ul Version 2.1.1 (April 04, 2006):\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 \ulnone 	
+\b0 * Word Counter is now a Universal Binary (will work on PowerPC and Intel Macs)
+\b \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 \ul Version 2.1 (January 16, 2006):\
+\ulnone 	* Now can either print or export multiple file count table data\
+	* Documentation now reflects that Word Counter can handle HTML files\
+	* Will provide feedback about files that Word Counter can't open in the multiple file count window
+\b \
+\
+
+\b0 \ul Version 2.0 (October 24, 2005):\ulnone \
+	* Can now perform bulk counts on multiple files at once, with the results displayed in a table.  Folders, files, or both can be dropped onto the Word Counter window as one way to activate this feature.\
+	* Word Counter can now handle files larger than 32k in size.
+\b \
+\
+
+\b0 \ul Version 1.9 (September 26, 2005):
+\b \ulnone \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf0 \ul 	
+\b0 \ulnone * Can now count words in the following file types: plain text (txt, text), rich text (rtf, rtfd), Microsoft Word (doc), Microsoft Word XML (wordml), and web archives (webarchive).  [Note: The ability to open some file types requires OS X 10.4 Tiger or higher].\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 \ul Version 1.8.1 (July 29, 2005):\
+\
+\ulnone 	* Word Counter is now OS X 10.4 (Tiger) compatible.\
+	* Fixed a small issue where the title of a file would not display in the window's title bar when opened via the menu.
+\b \
+\
+
+\b0 \ul Version 1.8 (May 09, 2005):\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 \ulnone \
+	
+\b0 * Vastly improved speed of all counts (previously intolerable waits have been reduced to a few seconds)\
+	* Improved accuracy of word counts\
+	* Now automatically switches back to TextEdit after pressing the word count icon in the floating TextEdit window\
+	* Choosing TextEdit option now brings TextEdit forward automatically\
+	* Window locations are now preserved between launches for all windows (except the help window)
+\b \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 \ul Version 1.7 (February 01, 2005):\
+\ulnone \
+    * Can now handle both plain text (txt) and rich text format (rtf) files\
+    * Added multiple text formatting options (to use with rich text)\
+    * Key-command to count words has been changed to command-N\
+    * Now asks for confirmation when dragging a file or text into the window if there are unsaved changed in the window\
+    * Improved icons\
+    * Improved help\
+    * A few other minor interface enhancements\
+    * Fixed a problem where it was not possible to highlight text on the first line of the window.\
+\
+\ul Version 1.6 (January 04, 2005):\
+\ulnone \
+    * Added the ability to perform word counts and character counts for the frontmost TextEdit document in a small floating window\
+    * Added the ability to automatically update the word counts based on a user-defined interval\
+    * Can now choose to count hyphenated words as a single word or as separate words\
+    * Created a separate window for the preferences\
+    * Added icons for the main window\
+    * A few other minor interface enhancements\
+\
+\ul Version 1.5 (October 18, 2004):\
+\ulnone \
+    * Can now open plain text files directly into the application\
+    * Can now save the window contents as a plain text file\
+    * Can now drag and drop text files onto the window's text box\
+    * Minor interface enhancements\
+    * Added "Undo Typing" menu option\
+    * Added minimal help into the application\
+    * Word and character counting preferences, window size, and window location are now saved between launches\
+\
+\ul Verison 1.4 (July 14, 2003):\
+\ulnone \
+    * Drastically improved the speed at which characters without spaces are counted. Using a PowerBook 667 and the first chapter of Moby Dick as a reference, the time for this function was reduced from 142 seconds to 1 second.\
+    * Made a minor interface enhancement\
+\
+\ul Version 1.3 (April 7, 2003):\
+\ulnone \
+    * Counts can now be performed on a subset of text if it is highlighted\
+    * Can "push" button to count words with a key command (Command-T)\
+\
+\ul Version 1.2 (March 30, 2003):\
+\ulnone \
+    * Added option to count characters with or without including spaces\
+    * Modified the window layout again\
+\
+\ul Version 1.1 (March 16, 2003):\
+\ulnone \
+    * Added a character count\
+    * Modified the window layout\
+\
+\ul Version 1.0 (March 8, 2003):\
+\ulnone \
+    * Initial release\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 Acknowledgements\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 \
+\pard\pardeftab720\sa280\ql\qnatural
+
+\f1\fs28 \cf0 I would like to thank the numerous users who provided bug reports and interesting suggestions for enhancing this application.
+\f0\fs26 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b \cf0 Feedback\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\b0 \cf0 \
+If you find Word Counter useful let me know!\
+\
+Send e-mail to David Hanauer: david@supermagnus.com\
+\
+This program can be found at http://www.supermagnus.com}

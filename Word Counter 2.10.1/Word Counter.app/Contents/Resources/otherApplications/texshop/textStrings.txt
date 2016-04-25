@@ -1,0 +1,7 @@
+TeXShop
+TeXShop
+TeXShop
+TeXShop
+TeXShop
+TeXShop
+Note: TeXShop is a free TeX previewer application. Text in the frontmost window is counted.  The command line program detex (part of the Tex live distribution) is required and should be located in /usr/texbin/.

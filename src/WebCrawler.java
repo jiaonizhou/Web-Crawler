@@ -123,7 +123,7 @@ public class WebCrawler {
 					String filename;
 					FileWriter out;
 					BufferedWriter bw;
-					filename = "/Users/hanzili/Desktop/repository/" + count + ".html";
+					filename = "repository/" + count + ".html";
 					out = new FileWriter(filename);
 					bw = new BufferedWriter(out);
 					bw.write(doc.toString());
@@ -200,14 +200,14 @@ public class WebCrawler {
 		in.close();
 		
 		// create repository directory
-		File dir = new File("/Users/hanzili/Desktop/repository");
+		File dir = new File("repository");
 		dir.mkdir();
 		
 		// run findURL
 		findURL(seed, max, domain);
 		
 		// output to report.html
-		FileWriter out = new FileWriter("/Users/hanzili/Desktop/report.html");
+		FileWriter out = new FileWriter("report.html");
 		BufferedWriter bw = new BufferedWriter(out);
 		bw.write("<!DOCTYPE html>\n");
 		bw.write("\t<head>\n");

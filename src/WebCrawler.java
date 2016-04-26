@@ -1,3 +1,5 @@
+package webCrawler.src;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -131,7 +133,7 @@ public class WebCrawler {
 					String filename;
 					FileWriter out;
 					BufferedWriter bw;
-					filename = "repository/" + count + ".html";
+					filename = "/Users/hanzili/Desktop/repository/" + count + ".html";
 					out = new FileWriter(filename);
 					bw = new BufferedWriter(out);
 					bw.write(doc.toString());
@@ -191,7 +193,7 @@ public class WebCrawler {
 	
 	public static void main(String args[]) throws IOException {
 		// read in seed, max, domain
-		FileReader in = new FileReader("specification.csv");
+		FileReader in = new FileReader("/Users/hanzili/Desktop/specification.csv");
 		BufferedReader br = new BufferedReader(in);
 		String line = null;
 		String seed = null;
@@ -208,14 +210,14 @@ public class WebCrawler {
 		in.close();
 		
 		// create repository directory
-		File dir = new File("repository");
+		File dir = new File("/Users/hanzili/Desktop/repository");
 		dir.mkdir();
 		
 		// run findURL
 		findURL(seed, max, domain);
 		
 		// output to report.html
-		FileWriter out = new FileWriter("report.html");
+		FileWriter out = new FileWriter("/Users/hanzili/Desktop/report.html");
 		BufferedWriter bw = new BufferedWriter(out);
 		bw.write("<!DOCTYPE html>\n");
 		bw.write("\t<head>\n");

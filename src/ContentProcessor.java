@@ -1,15 +1,10 @@
-<<<<<<< HEAD
-||||||| merged common ancestors
-package webCrawler.src;
 
-=======
 package webCrawler.src;
 
 /*
  * Noise Removal
  */
 
->>>>>>> 0c7df25ef1b7190d6198cfe437ebf986519938f6
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;

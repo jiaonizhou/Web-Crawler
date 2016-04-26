@@ -1,3 +1,5 @@
+package webCrawler.src;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -28,7 +30,7 @@ import crawlercommons.robots.BaseRobotRules;
 import crawlercommons.robots.SimpleRobotRulesParser;
 
 
-public class WebCrawlerMulti implements Runnable {
+public class WebCrawlerMulti implements Runnable{
    public static Queue<String> frontier = new LinkedList<String>();
    public static ArrayList<String> visited = new ArrayList<String>();
    public static HashMap<String, Integer> hpCount = new HashMap<String, Integer>();
@@ -67,11 +69,11 @@ public class WebCrawlerMulti implements Runnable {
          
       } catch (IllegalArgumentException e) {
          e.printStackTrace();
-         return false;
+         return true;
       } catch (MalformedURLException e) {
          // TODO Auto-generated catch block
          e.printStackTrace();
-         return false;
+         return true;
       } catch (ProtocolException e) {
          // TODO Auto-generated catch block
          e.printStackTrace();
@@ -80,10 +82,14 @@ public class WebCrawlerMulti implements Runnable {
          // TODO Auto-generated catch block
          e.printStackTrace();
          return true;
+      } catch (ClassCastException e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+         return true;
       }
    }
    
-   public String canonicalUrl(String urlStr) {
+   public static String canonicalURL(String urlStr) {
       try {
          URL url = new URL(urlStr);
          return url.getProtocol() + "://" + url.getHost() + url.getPath();
@@ -99,22 +105,28 @@ public class WebCrawlerMulti implements Runnable {
          try {
             String curr = frontier.poll();
             
+            if (visited.contains(curr)) {
+               continue;
+            }
+            
             if (!isCrawlAllowed(curr)) {
                continue;
             }
             
             // get response code
-            Connection.Response response = Jsoup.connect(curr).userAgent(UserAgent).timeout(10000).execute();
+            Connection.Response response = Jsoup.connect(curr).userAgent(UserAgent).timeout(10000).ignoreHttpErrors(true).execute();
             int responseCode = response.statusCode();
             hpResponse.put(curr, responseCode);
+            count++;
+            hpCount.put(curr, count);
+            visited.add(curr);
+            System.out.println(curr + " " + count); 
             
             if (responseCode == 200) {
+
                // connect current, extract title, increase count, put current into visited
                Document doc = Jsoup.connect(curr).userAgent(UserAgent).timeout(10000).get();
                String title = doc.title();
-               count ++;
-               visited.add(curr);
-               hpCount.put(curr, count);
                hpTitle.put(curr, title);
                
                // save HTML to repository folder
@@ -140,7 +152,7 @@ public class WebCrawlerMulti implements Runnable {
                // save crawled links to frontier
                List<String> urls = new ArrayList<String>();
                for (Element link: links) {
-                  String absHref = canonicalUrl(link.attr("abs:href"));
+                  String absHref = canonicalURL(link.attr("abs:href"));
                   if (domain != null) {
                      if(link.attr("abs:href").contains(domain)) {
                         if (!visited.contains(absHref)) {
@@ -216,7 +228,7 @@ public class WebCrawlerMulti implements Runnable {
       bw.write("\t\t<h1>Web Crawler Report</h1>\n");
       bw.write("\t\t<table border='1'>\n");
       bw.write("\t\t\t<tr>\n");
-      bw.write("\t\t\t\t<th>url</th>\n");
+      bw.write("\t\t\t\t<th>title</th>\n");
       bw.write("\t\t\t\t<th>filepath</th>\n");
       bw.write("\t\t\t\t<th>HTTP status code</th>\n");
       bw.write("\t\t\t\t<th>number of outlinks</th>\n");
@@ -236,7 +248,7 @@ public class WebCrawlerMulti implements Runnable {
       bw.write("<html>\n"); 
       bw.close();
    }
-
+   
    @Override
    public void run()
    {
@@ -250,6 +262,5 @@ public class WebCrawlerMulti implements Runnable {
       }
       
    }
-
 }
    

@@ -35,8 +35,10 @@ public class Driver {
       
       HashMap<String, Integer> myhpCount = myWebMulti.hpCount;
       Set<String> myhpCountKeys = myhpCount.keySet();
-      String allContent = "";
+      //String allContent = "";
       System.out.println("\nStart Content Processing... \n");
+      FileWriter out = new FileWriter("/Users/hanzili/Desktop/allMainContentCNN.txt");
+      BufferedWriter bw = new BufferedWriter(out);
       
       //int count = 1;
       for (String s: myhpCountKeys) {
@@ -49,12 +51,12 @@ public class Driver {
          String fileName = "/Users/hanzili/Desktop/repository/" 
                + Integer.toString(n) + ".html";
          ContentProcessor oneContent = new ContentProcessor(fileName);
-         allContent += oneContent.getFinalText() + " ";
+         bw.write(oneContent.getFinalText());
+         //allContent += oneContent.getFinalText() + " ";
       }
       
-      FileWriter out = new FileWriter("/Users/hanzili/Desktop/allMainContentYahoo.txt");
-      BufferedWriter bw = new BufferedWriter(out);
-      bw.write(allContent);
+      
+      
    }
 }
 

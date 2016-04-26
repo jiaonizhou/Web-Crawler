@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+||||||| merged common ancestors
+package webCrawler.src;
+
+=======
+package webCrawler.src;
+
+/*
+ * Noise Removal
+ */
+
+>>>>>>> 0c7df25ef1b7190d6198cfe437ebf986519938f6
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,7 +18,6 @@ import org.jsoup.*;
 import org.jsoup.nodes.Document;
 import org.jsoup.safety.Whitelist;
 import org.jsoup.select.Elements;
-
 
 public class ContentProcessor {
 
@@ -24,29 +35,16 @@ public class ContentProcessor {
       this.tokens = new ArrayList<>();
       this.optStart = 0;
       this.optEnd = 0;
-
-      //read input file from the repository
-      readInput(fileName);
- 
+      
+      readInput(fileName); //read input file from the repository
       setTagCountLookUp();
       findOptimum();
       generateFinalText();
       //tokensToString();
    }
-
-   /*
-   public void readInput2() throws IOException {
-      File input = new File("/Users/hanzili/Desktop/aboutscu.html");
-      Document doc = Jsoup.parse(input, "UTF-8", "http://example.com/");
-
-      Elements allTags = doc.select("*");
-      System.out.println(allTags.toString());
-
-   }
-   */
+   
 
    public void readInput(String fileName) throws IOException {
-      //fileName = "/Users/hanzili/Desktop/aboutscu.html";
       FileReader fileReader = new FileReader(fileName);
       String content = "";     
       int i ;
@@ -57,12 +55,9 @@ public class ContentProcessor {
 
       //clean this HTML to avoid cross-site scripting (XSS)
       String safeContent1 = Jsoup.clean(content, Whitelist.basic());      
-      String safeContent = safeContent1.replaceAll("&nbsp", "");
-      System.out.println(safeContent);
-      System.out.println();
-      System.out.println();
-      
-      
+      String safeContent2 = safeContent1.replaceAll("&nbsp", "");
+      String safeContent = safeContent2.replaceAll("&amp", "");
+     
       i = 0;
       int textStartChar = i;
       int textEndChar = i;
@@ -114,28 +109,12 @@ public class ContentProcessor {
          if (s.startsWith("&") && s.length() == 4) {
             continue;
          }
-         
-         /*
-         for (int j = 0; j < s.length(); i++) {
-            if (s.charAt(j) == '&') {
-               ss += s.substring(0, j);
-            }
-         }
-         */
 
          if ((ss.length() == 0) && !s.isEmpty() && !s.equals("\\s+")) {
             Token newToken = new Token(s, this.tokenPosition, 0);
             this.tokenPosition++;
             this.tokens.add(newToken);
          } 
-         
-         /*
-         else if ((ss.length() != 0) && !ss.equals("\\s+")) {
-            Token newToken = new Token(ss, this.tokenPosition, 0);
-            this.tokenPosition++;
-            this.tokens.add(newToken);
-         }
-         */
          
       }
    }
@@ -145,14 +124,6 @@ public class ContentProcessor {
       Token newToken = new Token(str, this.tokenPosition, 1);
       this.tokenPosition++;
       this.tokens.add(newToken);
-   }
-
-
-   private void tokensToString() {
-      for (Token i : this.tokens) {
-         System.out.println(i.getPosition() + ": " + i.getTokenString() + "; " 
-      + i.getMarker());
-      }
    }
 
 
@@ -166,6 +137,7 @@ public class ContentProcessor {
       }
    }
 
+   
    private void findOptimum() {
       int max = 0;
       int size = this.tokens.size();
@@ -208,15 +180,76 @@ public class ContentProcessor {
 
 
    private void generateFinalText() {
-      System.out.println(this.optStart);
-      System.out.println(this.optEnd);
+      System.out.println("Main Content, Word Token Start at Token #" + this.optStart
+            + "; Word Token End at Token #" + this.optEnd);
 
       for (int i = this.optStart; i <= this.optEnd; i++) {
          if (this.tokens.get(i).getMarker() == 0) {
             this.finalText += this.tokens.get(i).getTokenString() + " ";
          }
       }
-
+      System.out.println("After Content Processing, Main Content is Retrieved "
+            + "as the following: ");
       System.out.println(finalText);
+      System.out.println();
    }
+
+   
+   private void tokensToString() {
+      for (Token i : this.tokens) {
+         System.out.println(i.getPosition() + ": " + i.getTokenString() + "; " 
+      + i.getMarker());
+      }
+   }
+   
+   
+   public String getFinalText() {
+      return finalText;
+   }
+
+   public void setFinalText(String finalText) {
+      this.finalText = finalText;
+   }
+
+   public int getTokenPosition() {
+      return tokenPosition;
+   }
+
+   public void setTokenPosition(int tokenPosition) {
+      this.tokenPosition = tokenPosition;
+   }
+
+   public ArrayList<Token> getTokens() {
+      return tokens;
+   }
+
+   public void setTokens(ArrayList<Token> tokens) {
+      this.tokens = tokens;
+   }
+
+   public HashMap<Integer, Integer> getTagCountLookUp() {
+      return tagCountLookUp;
+   }
+
+   public void setTagCountLookUp(HashMap<Integer, Integer> tagCountLookUp) {
+      this.tagCountLookUp = tagCountLookUp;
+   }
+
+   public int getOptStart() {
+      return optStart;
+   }
+
+   public void setOptStart(int optStart) {
+      this.optStart = optStart;
+   }
+
+   public int getOptEnd() {
+      return optEnd;
+   }
+
+   public void setOptEnd(int optEnd) {
+      this.optEnd = optEnd;
+   }
+   
+   
 }

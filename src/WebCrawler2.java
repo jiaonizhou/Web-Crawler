@@ -30,18 +30,34 @@ import crawlercommons.robots.BaseRobotRules;
 import crawlercommons.robots.SimpleRobotRulesParser;
 
 
-public class WebCrawlerMulti implements Runnable{
-   public static Queue<String> frontier = new LinkedList<String>();
-   public static ArrayList<String> visited = new ArrayList<String>();
-   public static HashMap<String, Integer> hpCount = new HashMap<String, Integer>();
-   public static HashMap<String, String> hpTitle = new HashMap<String, String>();
-   public static HashMap<String, Integer> hpImage = new HashMap<String, Integer>();
-   public static HashMap<String, Integer> hpLink = new HashMap<String, Integer>();
-   public static HashMap<String, Integer> hpResponse = new HashMap<String, Integer>();
-   public static String UserAgent = 
+public class WebCrawler2 implements Runnable{
+   private Queue<String> frontier = new LinkedList<String>();
+   private ArrayList<String> visited;
+   private String seed; 
+   private int max_crawl;
+   private String domain;
+   private String outputFile;
+   private String outRepository;
+
+   private HashMap<String, Integer> hpCount = new HashMap<String, Integer>();
+   private HashMap<String, String> hpTitle = new HashMap<String, String>();
+   private HashMap<String, Integer> hpImage = new HashMap<String, Integer>();
+   private HashMap<String, Integer> hpLink = new HashMap<String, Integer>();
+   private HashMap<String, Integer> hpResponse = new HashMap<String, Integer>();
+   private String UserAgent = 
          "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.112 Safari/535.1";
-   public static int count = 0;
-   
+   private int count;
+
+   public WebCrawler2(ArrayList<String> visited, String seed, int max_crawl, String domain, String outputFile, String outRepository) {
+      this.visited = visited;
+      this.seed = seed;
+      this.max_crawl = max_crawl;
+      this.domain = domain;
+      this.count = 0;
+      this.outputFile = outputFile;
+      this.outRepository = outRepository;
+   }
+
    public boolean isCrawlAllowed(String urlStr) {
       if (urlStr == null || urlStr.equals("")) {
          return false;
@@ -61,12 +77,12 @@ public class WebCrawlerMulti implements Runnable{
          while ((line = reader.readLine()) != null) {
             robotsTxt += line + "\r\n";
          }
-         
+
          SimpleRobotRulesParser parser = new SimpleRobotRulesParser();
          BaseRobotRules rules = parser.parseContent(hostname, robotsTxt.getBytes("UTF-8"),
                "text/plain", UserAgent);
          return rules.isAllowed(urlStr);
-         
+
       } catch (IllegalArgumentException e) {
          e.printStackTrace();
          return true;
@@ -88,7 +104,7 @@ public class WebCrawlerMulti implements Runnable{
          return true;
       }
    }
-   
+
    public static String canonicalURL(String urlStr) {
       try {
          URL url = new URL(urlStr);
@@ -98,21 +114,21 @@ public class WebCrawlerMulti implements Runnable{
          return "";
       }
    }
-   
-   public synchronized void findURL(String seed, int max, String domain) throws IOException {
+
+   public synchronized void findURL(final String seed, final int max_crawl, final String domain) throws IOException {
       frontier.add(seed);
-      while (visited.size() < max && !frontier.isEmpty()) {
+      while (count < max_crawl && !frontier.isEmpty()) {
          try {
             String curr = frontier.poll();
-            
+
             if (visited.contains(curr)) {
                continue;
             }
-            
+
             if (!isCrawlAllowed(curr)) {
                continue;
             }
-            
+
             // get response code
             Connection.Response response = Jsoup.connect(curr).userAgent(UserAgent).timeout(10000).ignoreHttpErrors(true).execute();
             int responseCode = response.statusCode();
@@ -121,34 +137,34 @@ public class WebCrawlerMulti implements Runnable{
             hpCount.put(curr, count);
             visited.add(curr);
             System.out.println(curr + " " + count); 
-            
+
             if (responseCode == 200) {
 
                // connect current, extract title, increase count, put current into visited
                Document doc = Jsoup.connect(curr).userAgent(UserAgent).timeout(10000).get();
                String title = doc.title();
                hpTitle.put(curr, title);
-               
+
                // save HTML to repository folder
                String filename;
                FileWriter out;
                BufferedWriter bw;
-               filename = "/Users/hanzili/Desktop/repository/" + count + ".html";
+               filename = this.outRepository + "/" + count + ".html";
                out = new FileWriter(filename);
                bw = new BufferedWriter(out);
                bw.write(doc.toString());
                bw.close();
-                              
+
                // get image count
                Elements images = doc.getElementsByTag("img");
                int imgCount = images.size();
                hpImage.put(curr, imgCount);
-               
+
                // get link count
                Elements links = doc.select("a[href]");
                int linkCount = links.size();
                hpLink.put(curr, linkCount);
-               
+
                // save crawled links to frontier
                List<String> urls = new ArrayList<String>();
                for (Element link: links) {
@@ -165,59 +181,34 @@ public class WebCrawlerMulti implements Runnable{
                      }
                   }
                }
-               
+
                // de-dup
                Set<String> urlSet = new HashSet<String>();
                urlSet.addAll(urls);
 
                for (String link : urlSet) {
                   frontier.add(link);
-                }
+               }
             }
-         }
-         
-         catch (IllegalArgumentException e) {
+         } catch (IllegalArgumentException e) {
             e.printStackTrace();
-         }
-         catch (NullPointerException e) {
-              e.printStackTrace();
-          }
-         catch (HttpStatusException e) {
+         } catch (NullPointerException e) {
             e.printStackTrace();
-         }
-         catch (IOException e) {
+         } catch (HttpStatusException e) {
+            e.printStackTrace();
+         } catch (IOException e) {
             e.printStackTrace();
          }
       }
    }
-   
+
    public void crawlerProcessor() throws IOException {
-      // read in seed, max, domain
-      FileReader in = new FileReader("/Users/hanzili/Desktop/specification.csv");
-      BufferedReader br = new BufferedReader(in);
-      String line = null;
-      String seed = null;
-      String domain = null;
-      int max = 0;
-      if ((line = br.readLine()) != null) {
-         String[] input = line.split(",");
-         seed = input[0];
-         max = Integer.parseInt(input[1]);
-         if (input.length == 3) {
-            domain = input[2];
-         }
-      }
-      in.close();
-      
-      // create repository directory
-      File dir = new File("/Users/hanzili/Desktop/repository");
-      dir.mkdir();
-      
+
       // run findURL
-      findURL(seed, max, domain);
-      
-      // output to report.html
-      FileWriter out = new FileWriter("/Users/hanzili/Desktop/report.html");
+      findURL(this.seed, this.max_crawl, this.domain);
+
+      // output to reporti.html
+      FileWriter out = new FileWriter(this.outputFile);
       BufferedWriter bw = new BufferedWriter(out);
       bw.write("<!DOCTYPE html>\n");
       bw.write("\t<head>\n");
@@ -235,6 +226,9 @@ public class WebCrawlerMulti implements Runnable{
       bw.write("\t\t\t\t<th>number of images</th>\n");
       bw.write("\t\t\t</tr>\n");
       for (String url: visited) {
+         if (hpTitle.get(url) == null) {
+            continue;
+         }
          bw.write("\t\t\t<tr>\n");
          bw.write("\t\t\t\t<td><a href='" + url + "' target='_blank'>" + hpTitle.get(url) + "</a></td>\n");
          bw.write("\t\t\t\t<td><a href='repository/" + hpCount.get(url) + ".html' download>" + hpCount.get(url) + ".html</a></td>\n");
@@ -248,19 +242,17 @@ public class WebCrawlerMulti implements Runnable{
       bw.write("<html>\n"); 
       bw.close();
    }
-   
+
    @Override
    public void run()
    {
-      try
-      {
+      try {
          crawlerProcessor();
-      } catch (IOException e)
-      {
+      } catch (IOException e) {
          // TODO Auto-generated catch block
          e.printStackTrace();
       }
-      
+
    }
 }
-   
+

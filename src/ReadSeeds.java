@@ -32,13 +32,9 @@ public class ReadSeeds {
 
       try {
          String line = in.readLine();
-         System.out.println(line);
          while (line != null && !line.equals("e")) {
             line = line.trim();
             String[] input = line.split(",");
-            System.out.println(input.length);
-            System.out.println(input[0]);
-            System.out.println(input[1]);
             seeds.add(input[0]);
             maxCrawls.add(Integer.parseInt(input[1]));
             if (input.length == 3) {
@@ -59,8 +55,6 @@ public class ReadSeeds {
          this.outReports.add(outReport);
          File dir = new File(outRepository);
          dir.mkdir();
-         System.out.println(outReport);
-         System.out.println(outRepository);
       }
    }
 

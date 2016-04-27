@@ -30,7 +30,7 @@ import crawlercommons.robots.BaseRobotRules;
 import crawlercommons.robots.SimpleRobotRulesParser;
 
 
-public class WebCrawler2 implements Runnable{
+public class WebCrawlerMultiThread implements Runnable{
    private Queue<String> frontier = new LinkedList<String>();
    private ArrayList<String> visited;
    private String seed; 
@@ -48,7 +48,7 @@ public class WebCrawler2 implements Runnable{
          "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.112 Safari/535.1";
    private int count;
 
-   public WebCrawler2(ArrayList<String> visited, String seed, int max_crawl, String domain, String outputFile, String outRepository) {
+   public WebCrawlerMultiThread(ArrayList<String> visited, String seed, int max_crawl, String domain, String outputFile, String outRepository) {
       this.visited = visited;
       this.seed = seed;
       this.max_crawl = max_crawl;
@@ -254,5 +254,27 @@ public class WebCrawler2 implements Runnable{
       }
 
    }
+
+   public HashMap<String, Integer> getHpCount()
+   {
+      return hpCount;
+   }
+
+   public void setHpCount(HashMap<String, Integer> hpCount)
+   {
+      this.hpCount = hpCount;
+   }
+
+   public HashMap<String, Integer> getHpResponse()
+   {
+      return hpResponse;
+   }
+
+   public void setHpResponse(HashMap<String, Integer> hpResponse)
+   {
+      this.hpResponse = hpResponse;
+   }
+   
+   
 }
 

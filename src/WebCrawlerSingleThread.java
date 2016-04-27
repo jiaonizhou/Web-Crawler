@@ -30,19 +30,19 @@ import crawlercommons.robots.BaseRobotRules;
 import crawlercommons.robots.SimpleRobotRulesParser;
 
 
-public class WebCrawlerSingle{
+public class WebCrawlerSingleThread{
    
-   public static Queue<String> frontier = new LinkedList<String>();
-   public static ArrayList<String> visited = new ArrayList<String>();
-   public static HashMap<String, Integer> hpCount = new HashMap<String, Integer>();
-   public static HashMap<String, String> hpTitle = new HashMap<String, String>();
-   public static HashMap<String, Integer> hpImage = new HashMap<String, Integer>();
-   public static HashMap<String, Integer> hpLink = new HashMap<String, Integer>();
-   public static HashMap<String, Integer> hpResponse = new HashMap<String, Integer>();
-   public static String UserAgent;
-   public static int count;
+   public Queue<String> frontier = new LinkedList<String>();
+   public ArrayList<String> visited = new ArrayList<String>();
+   public HashMap<String, Integer> hpCount = new HashMap<String, Integer>();
+   public HashMap<String, String> hpTitle = new HashMap<String, String>();
+   public HashMap<String, Integer> hpImage = new HashMap<String, Integer>();
+   public HashMap<String, Integer> hpLink = new HashMap<String, Integer>();
+   public HashMap<String, Integer> hpResponse = new HashMap<String, Integer>();
+   public String UserAgent;
+   public int count;
    
-   public WebCrawlerSingle() {
+   public WebCrawlerSingleThread() throws IOException {
       this.frontier = new LinkedList<String>();
       this.visited = new ArrayList<String>();
       this.hpCount = new HashMap<String, Integer>();
@@ -53,6 +53,7 @@ public class WebCrawlerSingle{
       this.UserAgent = 
             "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.112 Safari/535.1";
       this.count = 0;
+      crawlerProcessor();
    }
    
    
@@ -103,7 +104,7 @@ public class WebCrawlerSingle{
       }
    }
    
-   public static String canonicalURL(String urlStr) {
+   public String canonicalURL(String urlStr) {
       try {
          URL url = new URL(urlStr);
          return url.getProtocol() + "://" + url.getHost() + url.getPath();

@@ -30,7 +30,7 @@ public class ReadSeeds {
 
       try {
          String line = in.readLine();
-         while (line != null && !line.equals("e")) {
+         while (line != null) {
             line = line.trim();
             String[] input = line.split(",");
             seeds.add(input[0]);
@@ -39,11 +39,11 @@ public class ReadSeeds {
                domains.add(input[2]);
             }
             line = in.readLine();
-            in.close();
          }
+         in.close();
       }catch (IOException e1) {
-         // System.out.printf("Error %20s%n"+ e1.toString());
-      }     
+         System.out.printf("Error %20s%n"+ e1.toString());
+      }
    }
 
    private void initializeOutputFile() {

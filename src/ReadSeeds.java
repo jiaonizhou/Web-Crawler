@@ -37,6 +37,8 @@ public class ReadSeeds {
             maxCrawls.add(Integer.parseInt(input[1]));
             if (input.length == 3) {
                domains.add(input[2]);
+            } else {
+               domains.add("");
             }
             line = in.readLine();
          }

@@ -1,4 +1,3 @@
-package webCrawler.src;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -56,7 +55,7 @@ public class WebCrawlerSingleThread{
       crawlerProcessor();
    }
    
-   
+   // parse robots.txt, return isCrawlAllowed
    public boolean isCrawlAllowed(String urlStr) {
       if (urlStr == null || urlStr.equals("")) {
          return false;
@@ -104,6 +103,7 @@ public class WebCrawlerSingleThread{
       }
    }
    
+   // regularize urls for de-dup
    public String canonicalURL(String urlStr) {
       try {
          URL url = new URL(urlStr);
@@ -128,7 +128,7 @@ public class WebCrawlerSingleThread{
                continue;
             }
             
-            // get response code
+            // get response code, increase count, put current into visited
             Connection.Response response = Jsoup.connect(curr).userAgent(UserAgent).timeout(10000).ignoreHttpErrors(true).execute();
             int responseCode = response.statusCode();
             hpResponse.put(curr, responseCode);
@@ -139,7 +139,7 @@ public class WebCrawlerSingleThread{
             
             if (responseCode == 200) {
 
-               // connect current, extract title, increase count, put current into visited
+               // get current, extract title
                Document doc = Jsoup.connect(curr).userAgent(UserAgent).timeout(10000).get();
                String title = doc.title();
                hpTitle.put(curr, title);
@@ -148,7 +148,7 @@ public class WebCrawlerSingleThread{
                String filename;
                FileWriter out;
                BufferedWriter bw;
-               filename = "/Users/hanzili/Desktop/repository/" + count + ".html";
+               filename = "repository/" + count + ".html";
                out = new FileWriter(filename);
                bw = new BufferedWriter(out);
                bw.write(doc.toString());
@@ -164,7 +164,7 @@ public class WebCrawlerSingleThread{
                int linkCount = links.size();
                hpLink.put(curr, linkCount);
                
-               // save crawled links to frontier
+               // save crawled links to urls, check domain requirement
                List<String> urls = new ArrayList<String>();
                for (Element link: links) {
                   String absHref = canonicalURL(link.attr("abs:href"));
@@ -181,34 +181,33 @@ public class WebCrawlerSingleThread{
                   }
                }
                
-               // de-dup
+               // de-dup links in urls, add uniques to frontier
                Set<String> urlSet = new HashSet<String>();
                urlSet.addAll(urls);
-
                for (String link : urlSet) {
                   frontier.add(link);
                 }
             }
-         }
-         
-         catch (IllegalArgumentException e) {
-            e.printStackTrace();
-         }
-         catch (NullPointerException e) {
-              e.printStackTrace();
-          }
-         catch (HttpStatusException e) {
-            e.printStackTrace();
-         }
-         catch (IOException e) {
-            e.printStackTrace();
+            
+         } catch (IllegalArgumentException e) {
+        	 // TODO Auto-generated catch block
+        	 e.printStackTrace();
+         } catch (NullPointerException e) {
+        	 // TODO Auto-generated catch block 
+        	 e.printStackTrace();
+          } catch (HttpStatusException e) {
+        	 // TODO Auto-generated catch block
+        	 e.printStackTrace();
+         } catch (IOException e) {
+        	// TODO Auto-generated catch block
+        	 e.printStackTrace();
          }
       }
    }
    
    public void crawlerProcessor() throws IOException {
       // read in seed, max, domain
-      FileReader in = new FileReader("/Users/hanzili/Desktop/specification.csv");
+      FileReader in = new FileReader("specification.csv");
       BufferedReader br = new BufferedReader(in);
       String line = null;
       String seed = null;
@@ -225,14 +224,14 @@ public class WebCrawlerSingleThread{
       in.close();
       
       // create repository directory
-      File dir = new File("/Users/hanzili/Desktop/repository");
+      File dir = new File("repository");
       dir.mkdir();
       
       // run findURL
       findURL(seed, max, domain);
       
       // output to report.html
-      FileWriter out = new FileWriter("/Users/hanzili/Desktop/report.html");
+      FileWriter out = new FileWriter("report.html");
       BufferedWriter bw = new BufferedWriter(out);
       bw.write("<!DOCTYPE html>\n");
       bw.write("\t<head>\n");

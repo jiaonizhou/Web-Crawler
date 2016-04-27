@@ -1,6 +1,3 @@
-
-package webCrawler.src;
-
 /*
  * Noise Removal
  */
@@ -10,9 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.jsoup.*;
-import org.jsoup.nodes.Document;
 import org.jsoup.safety.Whitelist;
-import org.jsoup.select.Elements;
+
 
 public class ContentProcessor {
 
@@ -47,7 +43,9 @@ public class ContentProcessor {
          char ch = (char)i;
          content += ch; 
       }
-
+      
+      fileReader.close();
+      
       //clean this HTML to avoid cross-site scripting (XSS)
       String safeContent1 = Jsoup.clean(content, Whitelist.basic());      
       String safeContent2 = safeContent1.replaceAll("&nbsp", "");
@@ -190,12 +188,12 @@ public class ContentProcessor {
    }
 
    
-   private void tokensToString() {
+/*   private void tokensToString() {
       for (Token i : this.tokens) {
          System.out.println(i.getPosition() + ": " + i.getTokenString() + "; " 
       + i.getMarker());
       }
-   }
+   }*/
    
    
    public String getFinalText() {
@@ -244,7 +242,6 @@ public class ContentProcessor {
 
    public void setOptEnd(int optEnd) {
       this.optEnd = optEnd;
-   }
-   
+   } 
    
 }

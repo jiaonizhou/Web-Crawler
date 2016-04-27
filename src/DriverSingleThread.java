@@ -1,11 +1,8 @@
-package webCrawler.src;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Set;
 
 public class DriverSingleThread {
@@ -25,14 +22,14 @@ public class DriverSingleThread {
       System.out.println("\nStart Content Processing... \n");
       
       // the final all main content is write into a txt file
-      FileWriter out = new FileWriter("/Users/hanzili/Desktop/allMainContent.txt");
+      FileWriter out = new FileWriter("allMainContent.txt");
       BufferedWriter bw = new BufferedWriter(out);
 
       for (String s: myhpCountKeys) {
          int n = myhpCount.get(s);
          if (myWebCrawler.hpResponse.get(s) == 200) {
             System.out.println("URL: "+ s + "; FileIndex: " + n + ".html;");
-            String fileName = "/Users/hanzili/Desktop/repository/" 
+            String fileName = "repository/" 
                   + Integer.toString(n) + ".html";
             ContentProcessor oneContent = new ContentProcessor(fileName);
             bw.write(oneContent.getFinalText());

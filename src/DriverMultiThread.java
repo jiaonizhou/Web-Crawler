@@ -1,4 +1,3 @@
-package webCrawler.src;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -10,7 +9,7 @@ import java.util.Set;
 public class DriverMultiThread {
    public static void main(String[] args) throws IOException {
 
-      String inputFileName = "/Users/hanzili/Desktop/specification.csv";
+      String inputFileName = "specification.csv";
       ReadSeeds seeds = new ReadSeeds(inputFileName);
 
       ArrayList<WebCrawlerMultiThread> myCrawlers = new ArrayList<>();
@@ -46,7 +45,7 @@ public class DriverMultiThread {
 
       for (int i = 0; i < threadNum; i++) {
          // the final all main content is write into a txt file
-         String fileName = "/Users/hanzili/Desktop/allMainContent" + i + ".txt";      
+         String fileName = "allMainContent" + i + ".txt";      
          FileWriter out = new FileWriter(fileName);
          BufferedWriter bw = new BufferedWriter(out);
          HashMap<String, Integer> myhpCount = myCrawlers.get(i).getHpCount();
@@ -57,7 +56,7 @@ public class DriverMultiThread {
             int n = myhpCount.get(s);
             if (myhpResponse.get(s) == 200) {
                System.out.println("URL: "+ s + "; FileIndex: " + n + ".html;");
-               String fileNameHTML = "/Users/hanzili/Desktop/repository" + i + "/" 
+               String fileNameHTML = "repository" + i + "/" 
                      + Integer.toString(n) + ".html";
                ContentProcessor oneContent = new ContentProcessor(fileNameHTML);
                bw.write(oneContent.getFinalText());

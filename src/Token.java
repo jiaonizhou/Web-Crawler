@@ -1,4 +1,3 @@
-package webCrawler.src;
 
 /*
  * Token object for noise removal 

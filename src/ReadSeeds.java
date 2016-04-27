@@ -1,8 +1,6 @@
-package webCrawler.src;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -41,16 +39,17 @@ public class ReadSeeds {
                domains.add(input[2]);
             }
             line = in.readLine();
+            in.close();
          }
       }catch (IOException e1) {
-         System.out.printf("Error %20s%n"+ e1.toString());
+         // System.out.printf("Error %20s%n"+ e1.toString());
       }     
    }
 
    private void initializeOutputFile() {
       for (int i = 0; i < seeds.size(); i++) {
-         String outRepository = "/Users/hanzili/Desktop/repository" + i;
-         String outReport = "/Users/hanzili/Desktop/report" + i + ".html";
+         String outRepository = "repository" + i;
+         String outReport = "report" + i + ".html";
          this.outRepositorys.add(outRepository);
          this.outReports.add(outReport);
          File dir = new File(outRepository);
@@ -117,7 +116,5 @@ public class ReadSeeds {
    {
       this.outRepositorys = outRepositorys;
    }
-
-
 
 }

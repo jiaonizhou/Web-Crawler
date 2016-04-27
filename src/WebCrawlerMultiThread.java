@@ -1,9 +1,6 @@
-package webCrawler.src;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -57,7 +54,8 @@ public class WebCrawlerMultiThread implements Runnable{
       this.outputFile = outputFile;
       this.outRepository = outRepository;
    }
-
+   
+   // parse robots.txt, return isCrawlAllowed
    public boolean isCrawlAllowed(String urlStr) {
       if (urlStr == null || urlStr.equals("")) {
          return false;
@@ -104,7 +102,8 @@ public class WebCrawlerMultiThread implements Runnable{
          return true;
       }
    }
-
+   
+   // regularize urls for de-dup
    public static String canonicalURL(String urlStr) {
       try {
          URL url = new URL(urlStr);
@@ -129,7 +128,7 @@ public class WebCrawlerMultiThread implements Runnable{
                continue;
             }
 
-            // get response code
+         // get response code, increase count, put current into visited
             Connection.Response response = Jsoup.connect(curr).userAgent(UserAgent).timeout(10000).ignoreHttpErrors(true).execute();
             int responseCode = response.statusCode();
             hpResponse.put(curr, responseCode);
@@ -140,7 +139,7 @@ public class WebCrawlerMultiThread implements Runnable{
 
             if (responseCode == 200) {
 
-               // connect current, extract title, increase count, put current into visited
+               // get current, extract title
                Document doc = Jsoup.connect(curr).userAgent(UserAgent).timeout(10000).get();
                String title = doc.title();
                hpTitle.put(curr, title);
@@ -165,7 +164,7 @@ public class WebCrawlerMultiThread implements Runnable{
                int linkCount = links.size();
                hpLink.put(curr, linkCount);
 
-               // save crawled links to frontier
+               // save crawled links to urls, check domain requirement
                List<String> urls = new ArrayList<String>();
                for (Element link: links) {
                   String absHref = canonicalURL(link.attr("abs:href"));
@@ -182,21 +181,25 @@ public class WebCrawlerMultiThread implements Runnable{
                   }
                }
 
-               // de-dup
+               // de-dup links in urls, add uniques to frontier
                Set<String> urlSet = new HashSet<String>();
                urlSet.addAll(urls);
-
                for (String link : urlSet) {
                   frontier.add(link);
                }
             }
+            
          } catch (IllegalArgumentException e) {
+        	// TODO Auto-generated catch block
             e.printStackTrace();
          } catch (NullPointerException e) {
+        	// TODO Auto-generated catch block
             e.printStackTrace();
          } catch (HttpStatusException e) {
+        	// TODO Auto-generated catch block
             e.printStackTrace();
          } catch (IOException e) {
+        	// TODO Auto-generated catch block
             e.printStackTrace();
          }
       }
@@ -274,7 +277,6 @@ public class WebCrawlerMultiThread implements Runnable{
    {
       this.hpResponse = hpResponse;
    }
-   
-   
+      
 }
 

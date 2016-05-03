@@ -7,23 +7,22 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ReadSeeds {
+public class ReadSeedsDemo {
    private ArrayList<String> seeds;
    private ArrayList<Integer> maxCrawls;
    private ArrayList<String> domains;
    private ArrayList<String> outReports;
    private ArrayList<String> outRepositorys;
 
-   public ReadSeeds(String fileName) throws IOException {
+   public ReadSeedsDemo(String fileName, String fileDir) throws IOException {
       this.seeds = new ArrayList<String>();
       this.maxCrawls = new ArrayList<Integer>();
       this.domains = new ArrayList<String>();
       this.outReports = new ArrayList<String>();
       this.outRepositorys = new ArrayList<String>();
       readInput(fileName);
-      initializeOutputFile();
+      initializeOutputFile(fileDir);
    }
-
 
    private void readInput(String fileName) throws IOException {
 
@@ -50,10 +49,10 @@ public class ReadSeeds {
       }
    }
 
-   private void initializeOutputFile() {
+   private void initializeOutputFile(String fileDir) {
       for (int i = 0; i < seeds.size(); i++) {
-         String outRepository = "repository" + i;
-         String outReport = "report" + i + ".html";
+         String outRepository = fileDir + "repository" + i;
+         String outReport = fileDir+ "report" + i + ".html";
          this.outRepositorys.add(outRepository);
          this.outReports.add(outReport);
          File dir = new File(outRepository);
